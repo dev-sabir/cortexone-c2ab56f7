@@ -6,9 +6,11 @@ import CostChart from "@/components/dashboard/CostChart";
 import RegionMap from "@/components/dashboard/RegionMap";
 import ExecutionLog from "@/components/dashboard/ExecutionLog";
 import RouterVisualization from "@/components/dashboard/RouterVisualization";
-import { Activity } from "lucide-react";
+import { Activity, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function Index() {
+  const { isDark, toggle } = useTheme();
   return (
     <div className="min-h-screen bg-background gradient-mesh">
       {/* Header */}
@@ -26,6 +28,13 @@ export default function Index() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={toggle}
+              className="w-9 h-9 rounded-lg border border-border bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun className="h-4 w-4 text-foreground" /> : <Moon className="h-4 w-4 text-foreground" />}
+            </button>
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow" />
               <span className="text-xs font-mono text-accent font-medium">ALL SYSTEMS OPERATIONAL</span>
